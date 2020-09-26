@@ -78,7 +78,7 @@ struct DatosJugador Jugador;
 	}
     if(TEST == 2)
     {
-    RegistrarJugador(Jugador);
+    Jugador=RegistrarJugador();
 	SetConsoleTextAttribute (hConsole,6);
 	printf("Jugador: %s , %s , DNI: %d \n",Jugador.Nombre,Jugador.Apellido,Jugador.Dni);
 	//Jugador.Puntaje = 200;

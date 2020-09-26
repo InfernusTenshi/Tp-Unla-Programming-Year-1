@@ -8,13 +8,15 @@
 #include "funciones.h"
  
 
-void RegistrarJugador(struct DatosJugador Jug)
+struct DatosJugador RegistrarJugador()
 {
+	
 	HANDLE hConsole;
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	//SetConsoleTextAttribute (hConsole,8);	
 	//int  dniJugador = 0;
 	int cantidadCartones = 0;
+	struct DatosJugador Jug;
 	printf("\n*****************************************************");
 	printf("\n************ Ingrese su nombre **********************");
 	printf("\n*****************************************************");

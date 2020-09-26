@@ -18,7 +18,7 @@ void cargarMatrizManual(int m[][RENGLONES][COLUMNAS],int pos);
 void MostrarCarton(int carton[][RENGLONES][COLUMNAS],int cantidad,int Bolitas[91],int NumActual,char Comp[2][3][RENGLONES][COLUMNAS],int Num);
 
 //int RegistrarJugador(char nombreJugador[8],char apellidoJugador[8]);
-void RegistrarJugador(struct DatosJugador Jug);
+struct DatosJugador RegistrarJugador();
 
 int CantidadCartones();
 void cartonesMaquina(int cantidad);
