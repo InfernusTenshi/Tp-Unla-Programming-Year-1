@@ -8,7 +8,6 @@
 #include "funciones.h"
 #define TESTING 1 // 1 (MODO DESAROLLADOR HABILITADO) - ? (MODO DESAROLLADOR DESABILITADO)
 
-
 int main()
 {
 struct DatosJugador Jugador;
@@ -79,9 +78,13 @@ struct DatosJugador Jugador;
 	}
     if(TEST == 2)
     {
-    Jugador.Dni = RegistrarJugador(Jugador.Nombre,Jugador.Apellido);
+    RegistrarJugador(Jugador);
 	SetConsoleTextAttribute (hConsole,6);
 	printf("Jugador: %s , %s , DNI: %d \n",Jugador.Nombre,Jugador.Apellido,Jugador.Dni);
+	//Jugador.Puntaje = 200;
+	//Escribir(Jugador);
+	//" %s , %s , DNI: %d \n",Jugador.Nombre,Jugador.Apellido,Jugador.Dni);
+	
 	SetConsoleTextAttribute (hConsole,7);
 	}
 	

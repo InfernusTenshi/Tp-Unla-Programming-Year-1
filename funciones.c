@@ -4,16 +4,16 @@
 #include <stdlib.h>
 #include <windows.h>
 #include <string.h>
+#include <stdbool.h>
 #include "funciones.h"
  
 
-int RegistrarJugador(char nombreJugador[8],char apellidoJugador[8])
+void RegistrarJugador(struct DatosJugador Jug)
 {
-	
 	HANDLE hConsole;
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	//SetConsoleTextAttribute (hConsole,8);	
-	int  dniJugador;
+	//int  dniJugador = 0;
 	int cantidadCartones = 0;
 	printf("\n*****************************************************");
 	printf("\n************ Ingrese su nombre **********************");
@@ -23,7 +23,8 @@ int RegistrarJugador(char nombreJugador[8],char apellidoJugador[8])
 	SetConsoleTextAttribute (hConsole,4);
 	printf("------->>> ");
 	SetConsoleTextAttribute (hConsole,7);
-	scanf("%s",nombreJugador);
+	fflush(stdin);
+	gets(Jug.Nombre);
 	system("cls");
 	fflush(stdin);
 	printf("\n*****************************************************");
@@ -34,7 +35,8 @@ int RegistrarJugador(char nombreJugador[8],char apellidoJugador[8])
 	SetConsoleTextAttribute (hConsole,4);
 	printf("------->>> ");
 	SetConsoleTextAttribute (hConsole,7);
-	scanf("%s",apellidoJugador);
+	fflush(stdin);
+	gets(Jug.Apellido);
 	system("cls");
 	fflush(stdin);
 	printf("\n*****************************************************");
@@ -45,11 +47,12 @@ int RegistrarJugador(char nombreJugador[8],char apellidoJugador[8])
 	SetConsoleTextAttribute (hConsole,4);
 	printf("------->>> ");
 	SetConsoleTextAttribute (hConsole,7);
-	scanf("%d",&dniJugador);
+	scanf("%d",&Jug.Dni);
 	
-	while(dniJugador < 10000000 || dniJugador > 99999999)
+	while(Jug.Dni < 10000000 || Jug.Dni > 99999999)
 	{
 		 			system("cls");
+		 			printf("%d",Jug.Dni);
 	                printf("\n*****************************************************");
 	                printf("\n********* DNI invalido intente nuevamente ***********");
 	                printf("\n*****************************************************");
@@ -58,10 +61,10 @@ int RegistrarJugador(char nombreJugador[8],char apellidoJugador[8])
 					SetConsoleTextAttribute (hConsole,4);
 					printf("------->>> ");
 					SetConsoleTextAttribute (hConsole,7);
-	                scanf("%d",&dniJugador);
+	                scanf("%d",&Jug.Dni);
 	}
 	system("cls");
-	return dniJugador;
+	return Jug;
 }
 
 int aleatorioEntre(int mini, int maxi){
@@ -241,6 +244,7 @@ void MostrarCarton(int carton[][RENGLONES][COLUMNAS],int cantidad,int Bolitas[91
 
 void Escribir(struct DatosJugador Jug)
 {
+	int Auxi =0;
 	FILE *archivo = fopen("Puntajes.ear","a");
 	if(archivo == NULL)
 	{
@@ -248,10 +252,27 @@ void Escribir(struct DatosJugador Jug)
 	}
 	else
 	{
-		fprintf(archivo," %d ",Jug.Dni);
-		fprintf(archivo,"%s ",Jug.Nombre);
-		fprintf(archivo,"%s ",Jug.Apellido);
-		fprintf(archivo,"%d ",Jug.Puntaje);
+		fprintf(archivo,"/ %d ",Jug.Dni);
+		
+		Auxi = (8 - strlen(Jug.Nombre));
+		fprintf(archivo,"%s",Jug.Nombre);
+		if(Auxi != 0)
+		{
+			for(int K=0;K<Auxi;K++)
+			fprintf(archivo," ");
+		}
+
+
+		
+		Auxi = (8 - strlen(Jug.Apellido));
+		fprintf(archivo," %s ",Jug.Apellido);
+		if(Auxi != 0)
+		{
+			for(int K=0;K<Auxi;K++)
+			fprintf(archivo," ");
+		}
+		
+		fprintf(archivo," %3d  /",Jug.Puntaje);
 			fputc('\n',archivo);
 		}
 	fclose(archivo);	
@@ -283,39 +304,42 @@ void Leer()
 		perror("error abriendo el archivo");
 	}
 	int c;
-	int puntaje;
-	int Y;
-	int Restar=0;
-	/*char DNI[10];
-	char Nombre[8];
-	char Apellido[8];*/
-	char aux[40] = "";
-	printf("*****************************************************\n");
-	printf("**************** <Mejores Puntajes> *****************\n");
-	printf("*****************************************************\n");
-	printf("*    DNI   ** Puntaje **** Nombre y Apellido ********\n");
-	printf("*****************************************************\n");
-	//while (feof(archivo) == 0)
-	//while((c=fgetc(archivo)) != EOF)
-	while (!feof(archivo))
-	{
-		fgets(aux, 40 ,archivo);
-		printf(" %s", aux);
-		//fscanf(archivo,"%s %s %s %d",&DNI,&Nombre,&Apellido,&puntaje);
-		//printf("* %s **%4d     **** %s %s ",DNI,puntaje,Nombre,Apellido);
-		
-		
-		/*Restar = (strlen(Nombre)+strlen(Apellido));
-		for(Y=0;Y<(16-Restar);Y++)
-		{
-			printf(" ");
+	lineas(201,205,187,34,1); // PRINCIPIO / LINEA / FIN / TAMAÑO / ESPACIO
+	printf("%c         <Mejores Puntajes>       %c\n",186,186);
+	lineas(200,205,188,34,1);
+	lineas(201,205,187,34,1);
+	printf("%c   DNI     Nombre  Apellido Score %c\n",186,186);
+	//printf("%c 00000000 00000000 00000000  000  %c\n",186,186);
+	lineas(204,205,185,34,1);
+
+	if (archivo) {
+	    while ((c = getc(archivo)) != EOF)
+	    {
+	        
+	        if(c=='/')
+	        {
+	        	printf("%c",186);
+			}else
+			{
+				putchar(c);
+			}
 		}
-			printf("********");
-		printf("\n");*/
+	    fclose(archivo);
 	}
-	printf("*****************************************************\n");
-	fclose(archivo);
+	lineas(200,205,188,34,1);
 }
+
+void lineas(char P,char L,char F,char T,int X)
+{
+if (X==1)
+printf("%c",P);
+else
+printf("\n%c",P);
+for(int I=1;I<=T;I++)
+printf("%c",L);
+printf("%c\n",F);
+}
+
 int Sacar(int Bolita[91]){
     int numero = 0;
     do{
