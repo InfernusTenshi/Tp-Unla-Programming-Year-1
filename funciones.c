@@ -17,9 +17,9 @@ struct DatosJugador RegistrarJugador()
 	//int  dniJugador = 0;
 	int cantidadCartones = 0;
 	struct DatosJugador Jug;
-	printf("\n*****************************************************");
-	printf("\n************ Ingrese su nombre **********************");
-	printf("\n*****************************************************");
+	lineas(201,205,187,36,1);
+	printf("%c         Ingrese Su Nombre          %c",186,186);
+	lineas(200,205,188,36,0);
 	printf("\n");
 	printf("\n");
 	SetConsoleTextAttribute (hConsole,4);
@@ -29,9 +29,9 @@ struct DatosJugador RegistrarJugador()
 	gets(Jug.Nombre);
 	system("cls");
 	fflush(stdin);
-	printf("\n*****************************************************");
-	printf("\n************ Ingrese su apellido ********************");
-	printf("\n*****************************************************");
+	lineas(201,205,187,36,1);
+	printf("%c         Ingrese Su Apellido        %c",186,186);
+	lineas(200,205,188,36,0);
 	printf("\n");
 	printf("\n");
 	SetConsoleTextAttribute (hConsole,4);
@@ -41,9 +41,9 @@ struct DatosJugador RegistrarJugador()
 	gets(Jug.Apellido);
 	system("cls");
 	fflush(stdin);
-	printf("\n*****************************************************");
-	printf("\n************ Ingrese su DNI *************************");
-	printf("\n*****************************************************");
+	lineas(201,205,187,36,1);
+	printf("%c         Ingrese Su DNI             %c",186,186);
+	lineas(200,205,188,36,0);
 	printf("\n");
 	printf("\n");
 	SetConsoleTextAttribute (hConsole,4);
@@ -54,10 +54,9 @@ struct DatosJugador RegistrarJugador()
 	while(Jug.Dni < 10000000 || Jug.Dni > 99999999)
 	{
 		 			system("cls");
-		 			printf("%d",Jug.Dni);
-	                printf("\n*****************************************************");
-	                printf("\n********* DNI invalido intente nuevamente ***********");
-	                printf("\n*****************************************************");
+					lineas(201,205,187,36,1);
+					printf("%c  DNI Invalido Ingreselo Nuevamente %c",186,186);
+					lineas(200,205,188,36,0);
 	                printf("\n");
 	                printf("\n");
 					SetConsoleTextAttribute (hConsole,4);
@@ -169,18 +168,20 @@ int CantidadCartones()
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     int cantidad = 0;
     do{
-     printf("\n*****************************************************");
-     printf("\n******** Por favor elija el numero de cartones: *****");
-     printf("\n**************** 1- Carton **************************");
-     printf("\n**************** 2- Cartones ************************");
-     printf("\n**************** 3- Cartones ************************");
-     printf("\n*****************************************************");
-     printf("\n");
-	 printf("\n");
-	 SetConsoleTextAttribute (hConsole,4);
-	 printf("------->>> ");
-	 SetConsoleTextAttribute (hConsole,7);
-     scanf("%d",&cantidad);        
+	    lineas(201,205,187,36,1);
+		printf("%c   Por Favor Elija la cantidad de   %c\n",186,186);
+		printf("%c   Cartones que desee para jugar    %c",186,186);
+		lineas(200,205,188,36,0);
+		lineas(201,205,187,36,1);//inicio
+		printf("%c (1) Carton                         %c\n",186,186);
+		printf("%c (2) Cartones                       %c\n",186,186);
+		printf("%c (3) Cartones                       %c\n",186,186);
+		lineas(200,205,188,36,1);
+	     printf("\n\n");
+		 SetConsoleTextAttribute (hConsole,4);
+		 printf("------->>> ");
+		 SetConsoleTextAttribute (hConsole,7);
+	     scanf("%d",&cantidad);        
      }      
      while(cantidad > 3 || cantidad < 1);
      return cantidad;

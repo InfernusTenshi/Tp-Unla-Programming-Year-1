@@ -72,17 +72,19 @@ struct DatosJugador Jugador;
 	
 	if(TEST == 2)
     {
-	printf("\n*****************************************************");
+    lineas(201,205,187,36,1);
+	printf("%c         Bienvenido Al Bingo        %c",186,186);
+	lineas(200,205,188,36,0);
+/*	printf("\n*****************************************************");
     printf("\n************** Bienvenido al Bingo ******************");
-    printf("\n-----------------------------------------------------");
+    printf("\n-----------------------------------------------------");*/
 	}
     if(TEST == 2)
     {
     Jugador=RegistrarJugador();
 	SetConsoleTextAttribute (hConsole,6);
 	printf("Jugador: %s , %s , DNI: %d \n",Jugador.Nombre,Jugador.Apellido,Jugador.Dni);
-	Jugador.Puntaje = 200;
-	Escribir(Jugador);
+	//Escribir(Jugador);
 	//" %s , %s , DNI: %d \n",Jugador.Nombre,Jugador.Apellido,Jugador.Dni);
 	
 	SetConsoleTextAttribute (hConsole,7);
@@ -103,12 +105,14 @@ struct DatosJugador Jugador;
 		      	system("cls");
 		      	    if(TEST == 2)
     				{
-		      	   printf("\n*********************************************");
-		           printf("\n** Elija como quiere cargar el carton n%c %d **",167,i+1);
-		           printf("\n*********************************************");
-		           printf("\n****** -1- Carton personalizado *************");
-		           printf("\n****** -2- Carton Aleatorio *****************");
-		           printf("\n*********************************************");
+    				    lineas(201,205,187,36,1);
+						printf("%c   Por Favor Elija Como Desearia    %c\n",186,186);
+						printf("%c       El Carton Actual N%c %d        %c",186,167,i+1,186);
+						lineas(200,205,188,36,0);
+						lineas(201,205,187,36,1);//inicio
+						printf("%c (1) Carton Personalizado           %c\n",186,186);
+						printf("%c (2) Carton Aleatorio               %c\n",186,186);
+						lineas(200,205,188,36,1);
 		           //printf("\nOpcion: ");
 		           printf("\n\n\n");
 				   SetConsoleTextAttribute (hConsole,4);
@@ -134,9 +138,9 @@ struct DatosJugador Jugador;
 		                break;
 		            default:
 		                system("cls");
-		                printf("\n*****************************************************");
-		                printf("\n******** Opcion invalida intente de nuevo ***********");
-		                printf("\n*****************************************************");
+						lineas(201,205,187,36,1);
+						printf("%c Opcion Invalida Intentelo De Nuevo %c",186,186);
+						lineas(200,205,188,36,0);
 		                printf("\n\n\n");
 		                getch();
 		                system("cls");
@@ -162,22 +166,26 @@ struct DatosJugador Jugador;
 			system("cls");
     	       	do{
 				system("cls");
-				printf("\n*********************************************");
-				printf("\n***************** Bienvenido ****************");
-				printf("\n*********************************************");
-				printf("\n****** -1- Mostrar cartones            ******");
-				printf("\n****** -2- Sacar 10 Bolitas            ******");
-				printf("\n****** -3- Sacar bolilla               ******");
-				printf("\n****** -4- Cantar Linea                ******");
-				printf("\n****** -5- Cantar Columna              ******");
-				printf("\n****** -6- Cantar Bingo                ******");
-				printf("\n****** -7- Ver Puntajes                ******");
-				printf("\n****** -0- Salir Del Juego             ******");
-				printf("\n*********************************************");
-				printf("\n******   Su Puntaje Actual es de : %3d ******",PuntajeActual);
-				printf("\n*********************************************");
-				printf("\n******   Puntaje De La Maquina : %3d   ******",PuntajeMaquina);
-				printf("\n*********************************************");
+				lineas(201,205,187,36,1);
+				printf("%c              Bienvenido            %c",186,186);
+				lineas(200,205,188,36,0);// fin 
+				lineas(201,205,187,36,1);//inicio
+				printf("%c (1) Mostrar Cartones               %c\n",186,186);
+				printf("%c (2) Sacar 10 Bolitas               %c\n",186,186);
+				printf("%c (3) Sacar Bolita                   %c\n",186,186);
+				printf("%c (4) Cantar Linea                   %c\n",186,186);
+				printf("%c (5) Cantar Columna                 %c\n",186,186);
+				printf("%c (6) Cantar Bingo                   %c\n",186,186);
+				printf("%c (7) Ver Puntajes Altos             %c\n",186,186);
+				printf("%c (0) Salir del Juego                %c\n",186,186);
+				lineas(200,205,188,36,1);
+				lineas(201,205,187,36,0);
+				printf("%c Su Puntaje Actual es: %3d          %c",186,PuntajeActual,186);
+				lineas(200,205,188,36,0);
+				lineas(201,205,187,36,0);
+				printf("%c Puntaje De La Maquina : %3d        %c",186,PuntajeMaquina,186);
+				lineas(200,205,188,36,0);
+
 	           	printf("\n\n\n");
 				SetConsoleTextAttribute (hConsole,4);
 				printf("------->>> ");
@@ -187,16 +195,16 @@ struct DatosJugador Jugador;
 	           {
 	           	case 1:
 	           			system("cls");
-						printf("\n*********************************************");
-						printf("\n*************** Cartones Jugador ************");
-						printf("\n*********************************************");
+						lineas(201,205,187,36,1);
+						printf("%c       Cartones Del Jugador         %c",186,186);
+						lineas(200,205,188,36,0);
 						printf("\n");
 						MostrarCarton(cartonJugador,cantidadCartones,Bolillas,-98,Comprobador,0);
 						getch();
 						system("cls");
-		           		printf("\n*********************************************");
-						printf("\n*************** Cartones Maquina ************");
-						printf("\n*********************************************");	
+						lineas(201,205,187,36,1);
+						printf("%c     Cartones De La Maquina         %c",186,186);
+						lineas(200,205,188,36,0);	
 						printf("\n"); 	
 						MostrarCarton(cartonesMaquina,cantidadCartones,Bolillas,-98,Comprobador,1);
 						getch();
