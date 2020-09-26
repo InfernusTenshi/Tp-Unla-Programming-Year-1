@@ -81,8 +81,8 @@ struct DatosJugador Jugador;
     Jugador=RegistrarJugador();
 	SetConsoleTextAttribute (hConsole,6);
 	printf("Jugador: %s , %s , DNI: %d \n",Jugador.Nombre,Jugador.Apellido,Jugador.Dni);
-	//Jugador.Puntaje = 200;
-	//Escribir(Jugador);
+	Jugador.Puntaje = 200;
+	Escribir(Jugador);
 	//" %s , %s , DNI: %d \n",Jugador.Nombre,Jugador.Apellido,Jugador.Dni);
 	
 	SetConsoleTextAttribute (hConsole,7);
