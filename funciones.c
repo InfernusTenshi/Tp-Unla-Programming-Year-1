@@ -238,7 +238,25 @@ void MostrarCarton(int carton[][RENGLONES][COLUMNAS],int cantidad,int Bolitas[91
 		
 
 }
-void Escribir(int punt,int dni,char nomb[10],char ape[10])
+
+void Escribir(struct DatosJugador Jug)
+{
+	FILE *archivo = fopen("Puntajes.ear","a");
+	if(archivo == NULL)
+	{
+		perror("error abriendo el archivo");
+	}
+	else
+	{
+		fprintf(archivo," %d ",Jug.Dni);
+		fprintf(archivo,"%s ",Jug.Nombre);
+		fprintf(archivo,"%s ",Jug.Apellido);
+		fprintf(archivo,"%d ",Jug.Puntaje);
+			fputc('\n',archivo);
+		}
+	fclose(archivo);	
+}
+/*void Escribir(int punt,int dni,char nomb[10],char ape[10])
 {
 	FILE *archivo = fopen("Puntajes.ear","a");
 	if(archivo == NULL)
@@ -256,7 +274,7 @@ void Escribir(int punt,int dni,char nomb[10],char ape[10])
 		}
 	fclose(archivo);
 }
-
+*/
 void Leer()
 {
 	FILE *archivo = fopen("Puntajes.ear","r");
@@ -268,28 +286,32 @@ void Leer()
 	int puntaje;
 	int Y;
 	int Restar=0;
-	int DNI;
+	/*char DNI[10];
 	char Nombre[8];
-	char Apellido[8];
+	char Apellido[8];*/
+	char aux[40] = "";
 	printf("*****************************************************\n");
 	printf("**************** <Mejores Puntajes> *****************\n");
 	printf("*****************************************************\n");
 	printf("*    DNI   ** Puntaje **** Nombre y Apellido ********\n");
 	printf("*****************************************************\n");
 	//while (feof(archivo) == 0)
-	while((c=fgetc(archivo)) != EOF)
+	//while((c=fgetc(archivo)) != EOF)
+	while (!feof(archivo))
 	{
+		fgets(aux, 40 ,archivo);
+		printf(" %s", aux);
+		//fscanf(archivo,"%s %s %s %d",&DNI,&Nombre,&Apellido,&puntaje);
+		//printf("* %s **%4d     **** %s %s ",DNI,puntaje,Nombre,Apellido);
 		
-		fscanf(archivo,"%d %s %s %d",&DNI,&Nombre,&Apellido,&puntaje);
-		printf("* %1d **%4d     **** %s %s ",DNI,puntaje,Nombre,Apellido);
 		
-		Restar = (strlen(Nombre)+strlen(Apellido));
+		/*Restar = (strlen(Nombre)+strlen(Apellido));
 		for(Y=0;Y<(16-Restar);Y++)
 		{
 			printf(" ");
 		}
 			printf("********");
-		printf("\n");
+		printf("\n");*/
 	}
 	printf("*****************************************************\n");
 	fclose(archivo);

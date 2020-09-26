@@ -3,7 +3,13 @@
 
 #define RENGLONES 3
 #define COLUMNAS 5
-
+struct DatosJugador
+{
+	char Nombre[8];
+	char Apellido[8];
+	double Dni;
+	int Puntaje;
+};
 
 int aleatorioEntre(int mini, int maxi);
 int buscarEnMatriz(int m[][RENGLONES][COLUMNAS],int pos, int buscar);
@@ -13,7 +19,11 @@ void MostrarCarton(int carton[][RENGLONES][COLUMNAS],int cantidad,int Bolitas[91
 int RegistrarJugador(char nombreJugador[8],char apellidoJugador[8]);
 int CantidadCartones();
 void cartonesMaquina(int cantidad);
-void Escribir(int punt,int dni,char nomb[10],char ape[10]);
+
+void Escribir (struct DatosJugador Jug);
+//void Escribir(int punt,int dni,char nomb[10],char ape[10]);
+
+
 void Leer();
 void vaciar(int Bola[91]);
 int Sacar(int Bolita[91]);

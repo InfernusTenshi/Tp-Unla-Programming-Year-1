@@ -6,14 +6,8 @@
 #include <string.h>
 #include <stdbool.h>
 #include "funciones.h"
-#define TESTING 2 // 1 (MODO DESAROLLADOR HABILITADO) - ? (MODO DESAROLLADOR DESABILITADO)
-struct DatosJugador
-{
-	char Nombre[8];
-	char Apellido[8];
-	int Dni;
-	int Puntaje;
-};
+#define TESTING 1 // 1 (MODO DESAROLLADOR HABILITADO) - ? (MODO DESAROLLADOR DESABILITADO)
+
 
 int main()
 {
@@ -392,7 +386,7 @@ struct DatosJugador Jugador;
 					{
 			            if(PBingo == false)
 			            {
-			                PColumna = true;
+			                PBingo = true;
 			                PuntajeActual = PuntajeActual+10;
 						}
 						//printf("\n*************** Usted gana ***************\n");
@@ -458,7 +452,7 @@ struct DatosJugador Jugador;
 		//printf("se sacaron %d",CantBolitas);
 		if(PBingo == true)
 		{
-			if(PuntajeActual > PuntajeMaquina)
+			if(PuntajeActual < PuntajeMaquina)
 			{
 					system("cls");
 	                printf("\n*****************************************************");
@@ -489,6 +483,7 @@ struct DatosJugador Jugador;
 					{
 	        	    	printf("\n**** Sus Puntajes Seran Multiplicados por %.1f   ********",Multip);	
 					}
+					printf("\n*******************************************************");
 					getch();
 					char SAVEAUX = 'G';
 					int SAVE =8;
@@ -511,6 +506,7 @@ struct DatosJugador Jugador;
 					if(SAVEAUX == 'Y' || SAVEAUX == 'y') //  TIENE QUE GUARDAR Y MOSTRAR
 					{
 						SAVE =7;
+						Escribir(Jugador);
 						//void Escribir(int punt,int dni,char nomb[10],char ape[10])
 					}
 					if(SAVEAUX == 'N' || SAVEAUX == 'n')  // FINAL PROGRAMA !!
@@ -526,7 +522,7 @@ struct DatosJugador Jugador;
 	            	
 	            	
 			}
-			if(PuntajeActual < PuntajeMaquina)// FINAL PROGRAMA !!
+			/*if(PuntajeActual < PuntajeMaquina)// FINAL PROGRAMA !!
 			{
 					system("cls");
 	                printf("\n*****************************************************");
@@ -536,7 +532,7 @@ struct DatosJugador Jugador;
 	                printf("\n*****************************************************");
 	                
 	                printf("\n");
-			}
+			}*/
 		}
 	
 	
