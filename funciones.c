@@ -8,7 +8,7 @@
 #include "funciones.h"
 #include "Juego.h"
 #include "MetaJuego.h"
-#include "datos.h"
+#include "Datos.h"
 
 
 int aleatorioEntre(int mini, int maxi){
@@ -80,6 +80,14 @@ printf("\n%c",P);
 for(int I=1;I<=T;I++)
 printf("%c",L);
 printf("%c\n",F);
+}
+
+void Espacios(int X)
+{
+	for(int I=0;I<X;I++)
+	{
+		printf(" ");
+	}
 }
 
 void vaciar(int Bola[91]){

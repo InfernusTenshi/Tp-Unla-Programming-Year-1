@@ -8,13 +8,16 @@
 #include "funciones.h"
 #include "Juego.h"
 #include "MetaJuego.h"
-#include "datos.h"
-#define TESTING 0 // 1 (MODO DESAROLLADOR HABILITADO) - ? (MODO DESAROLLADOR DESABILITADO)
+#include "Datos.h"
+#define TESTING 1 // 1 (MODO DESAROLLADOR HABILITADO) - ? (MODO DESAROLLADOR DESABILITADO)
+#define MAXJUGADORES 30
 
 int main()
 {
-Jugador Player;
-
+	Jugador MejoresJugadores[MAXJUGADORES];
+	CargarArchivoLimpio(MejoresJugadores,MAXJUGADORES);
+	CargarArchivo(MejoresJugadores);
+	
 	float Multip=0;
 	int CantBolitas =0;
 	int cantidadCartones;	
@@ -84,7 +87,7 @@ Jugador Player;
 	}
     if(TEST == 2)
     {
-    Player=RegistrarJugador();
+    Jugador Player=RegistrarJugador();
 	SetConsoleTextAttribute (hConsole,6);
 	printf("Jugador: %s , %s , DNI: %d \n",GetNombre(Player),GetApellido(Player),GetDni(Player));
 	//Escribir(Jugador);
@@ -414,7 +417,7 @@ Jugador Player;
 				break;
 				case 7:
 					system("cls");
-	                Leer();
+	                MostrarTablaJugadores(MejoresJugadores,MAXJUGADORES);
 	                getch();
 				break;
 				case 0:// FINAL PROGRAMA !!
