@@ -18,14 +18,17 @@ struct DatosJugador{
 
 Jugador RegistrarJugador()
 {
-	Jugador G = malloc(sizeof(struct DatosJugador));
+	Jugador J = malloc(sizeof(struct DatosJugador));
 	HANDLE hConsole;
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	char auxN[8] = " ";
 	char auxA[8] = " ";
 	long Dni=0;
 	
-
+	//SetConsoleTextAttribute (hConsole,8);	
+	//int  dniJugador = 0;
+	int cantidadCartones = 0;
+	struct DatosJugador Jug;
 	lineas(201,205,187,36,1);
 	printf("%c         Ingrese Su Nombre          %c",186,186);
 	lineas(200,205,188,36,0);
@@ -74,8 +77,8 @@ Jugador RegistrarJugador()
 	}
 	system("cls");
 //	(J->Dni) = Dni;
-   strcpy(G->Nombre, auxN);
-   strcpy(G->Apellido, auxN);
+   strcpy(J->Nombre, auxN);
+   strcpy(J->Apellido, auxN);
    
 	return J;
 }
