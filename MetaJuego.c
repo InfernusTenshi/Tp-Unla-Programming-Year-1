@@ -9,6 +9,7 @@
 #include "funciones.h"
 #include "Juego.h"
 #include "MetaJuego.h"
+#include "datos.h"
 
 
 

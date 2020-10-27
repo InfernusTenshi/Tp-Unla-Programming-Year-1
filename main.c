@@ -8,11 +8,12 @@
 #include "funciones.h"
 #include "Juego.h"
 #include "MetaJuego.h"
-#define TESTING 1 // 1 (MODO DESAROLLADOR HABILITADO) - ? (MODO DESAROLLADOR DESABILITADO)
+#include "datos.h"
+#define TESTING 0 // 1 (MODO DESAROLLADOR HABILITADO) - ? (MODO DESAROLLADOR DESABILITADO)
 
 int main()
 {
-struct DatosJugador Jugador;
+Jugador Player;
 
 	float Multip=0;
 	int CantBolitas =0;
@@ -83,9 +84,9 @@ struct DatosJugador Jugador;
 	}
     if(TEST == 2)
     {
-    Jugador=RegistrarJugador();
+    Player=RegistrarJugador();
 	SetConsoleTextAttribute (hConsole,6);
-	printf("Jugador: %s , %s , DNI: %d \n",Jugador.Nombre,Jugador.Apellido,Jugador.Dni);
+	printf("Jugador: %s , %s , DNI: %d \n",GetNombre(Player),GetApellido(Player),GetDni(Player));
 	//Escribir(Jugador);
 	//" %s , %s , DNI: %d \n",Jugador.Nombre,Jugador.Apellido,Jugador.Dni);
 	
@@ -519,7 +520,7 @@ struct DatosJugador Jugador;
 					if(SAVEAUX == 'Y' || SAVEAUX == 'y') //  TIENE QUE GUARDAR Y MOSTRAR
 					{
 						SAVE =7;
-						Escribir(Jugador);
+						//Escribir(Jugador);
 						//void Escribir(int punt,int dni,char nomb[10],char ape[10])
 					}
 					if(SAVEAUX == 'N' || SAVEAUX == 'n')  // FINAL PROGRAMA !!

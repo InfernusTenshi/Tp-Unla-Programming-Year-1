@@ -9,6 +9,7 @@
 #include "funciones.h"
 #include "Juego.h"
 #include "MetaJuego.h"
+#include "datos.h"
 
 void cargarMatrizManual(int m[][RENGLONES][COLUMNAS],int pos){
 	HANDLE hConsole;
