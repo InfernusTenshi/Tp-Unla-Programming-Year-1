@@ -270,48 +270,6 @@ void MostrarTablaJugadores(Jugador Jug[],int Max)
 	lineas(200,205,188,44,1);// Fin
 }
 
-
-
-
-
-
-
-/*
-
-
-
-void Leer()
-{
-	FILE *archivo = fopen("Puntajes.ear","r");
-	if(archivo == NULL)
-	{
-		perror("error abriendo el archivo");
-	}
-	int c;
-	lineas(201,205,187,34,1);
-	printf("%c         <Mejores Puntajes>       %c\n",186,186);
-	lineas(200,205,188,34,1);
-	lineas(201,205,187,34,1);
-	printf("%c   DNI     Nombre  Apellido Score %c\n",186,186);
-	lineas(204,205,185,34,1);
-
-	if (archivo) {
-	    while ((c = getc(archivo)) != EOF)
-	    {
-	        
-	        if(c=='/')
-	        {
-	        	printf("%c",186);
-			}else
-			{
-				putchar(c);
-			}
-		}
-	    fclose(archivo);
-	}
-	lineas(200,205,188,34,1);
-}
-*/
 // -------- GETS
 char* GetNombre(Jugador J)
 {
