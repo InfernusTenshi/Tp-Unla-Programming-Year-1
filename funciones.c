@@ -6,7 +6,8 @@
 #include <string.h>
 #include <stdbool.h>
 #include "funciones.h"
- 
+#include "Juego.h"
+#include "MetaJuego.h"
 
 struct DatosJugador RegistrarJugador()
 {
@@ -126,43 +127,9 @@ void cargarMatrizAleatoria(int m[][RENGLONES][COLUMNAS],int pos){
 			}
            
     }
-void cargarMatrizManual(int m[][RENGLONES][COLUMNAS],int pos){
-	HANDLE hConsole;
-	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
-     int numeroNuevo = 0;
-     int resultadoBusqueda = 0 ;
-	
-	 for ( int i = 0; i<RENGLONES; i++){
-			for ( int j = 0; j < COLUMNAS;j++)
-				{
-				
-					do{
-						printf("Ingrese un numero...");
-						printf("\n");
-						SetConsoleTextAttribute (hConsole,4);
-						printf("------->>> ");
-						SetConsoleTextAttribute (hConsole,7);
-			     		scanf("%d",&numeroNuevo); 
-				        resultadoBusqueda = buscarEnMatriz(m,pos,numeroNuevo); //nos da la posicion ---> -1
-				        if(resultadoBusqueda == 0)
-				        {
-				        	printf("Error numero repetido\n");
-						}
-						if(numeroNuevo>90)
-						{
-							printf("El numero no debe ser mayor a 90\n");
-						}
-			        }while(resultadoBusqueda==0 || numeroNuevo >90);
-			
-			        m[pos][i][j] = numeroNuevo;
-	
-	            }	
-			}
-           
-    }
 
-int CantidadCartones()
+/*int CantidadCartones()
 {
 	HANDLE hConsole;
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -186,65 +153,7 @@ int CantidadCartones()
      while(cantidad > 3 || cantidad < 1);
      return cantidad;
 }
-void MostrarCarton(int carton[][RENGLONES][COLUMNAS],int cantidad,int Bolitas[91],int NumActual,char Comp[2][3][RENGLONES][COLUMNAS],int Num)
-{
-	HANDLE hConsole;
-	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute (hConsole,8);	
-	for (int M=0;M<cantidad;M++)
-	{
-			for( int F=0;F<RENGLONES;F++)
-			{
-				for(int C=0;C<COLUMNAS;C++)
-				{
-					if(Comp[Num][M][F][C] == 'L')
-					{
-						SetConsoleTextAttribute (hConsole,4);
-					}else if(Comp[Num][M][F][C] == 'C')
-					{
-						SetConsoleTextAttribute (hConsole,9);
-					}
-					else
-					{
-						if(carton[M][F][C] == NumActual)
-						{
-							SetConsoleTextAttribute (hConsole,6);
-						}
-						else
-						{
-							if(Bolitas[carton[M][F][C]] == 0)
-							{
-								SetConsoleTextAttribute (hConsole,8);
-							}
-							if(Bolitas[carton[M][F][C]] == 1)
-							{
-								SetConsoleTextAttribute (hConsole,10);
-							}
-							if(Bolitas[carton[M][F][C]] == 3)
-							{
-								SetConsoleTextAttribute (hConsole,4);
-							}
-						}
-					}
-
-					printf(" %2d ",carton[M][F][C]);
-					SetConsoleTextAttribute (hConsole,7);
-					
-				}
-				printf(" \n");
-			}
-			printf(" \n");
-				
-			
-    }		  
-
-	
-				
-				
-		
-
-}
-
+*/
 void Escribir(struct DatosJugador Jug)
 {
 	int Auxi =0;
@@ -342,7 +251,7 @@ for(int I=1;I<=T;I++)
 printf("%c",L);
 printf("%c\n",F);
 }
-
+/*
 int Sacar(int Bolita[91]){
     int numero = 0;
     do{
@@ -354,7 +263,7 @@ int Sacar(int Bolita[91]){
         // sino salio se le asigna un 1 por primera vez
         Bolita[numero] = 1;
     return numero;
-}
+}*/
 
 void vaciar(int Bola[91]){
     for(int i=0;i<91;i++)
@@ -377,7 +286,7 @@ void vaciarCartonPiola(int carton[][RENGLONES][COLUMNAS],int cantidad){//se vaci
     	}
 	}
 }
-
+/*
 int ComprobarLinea(int carton[][RENGLONES][COLUMNAS],int cantidad,int Bolitas[91],char Comp[2][3][RENGLONES][COLUMNAS],int Num)
 {
 	//Num 0 = Jugador / Num 1 = Maquina	
@@ -503,4 +412,5 @@ for (int M=0;M<cantidad;M++)
     }
 	return Bingo;
 }
+*/
 

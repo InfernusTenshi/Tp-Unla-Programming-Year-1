@@ -4,8 +4,8 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = funciones.o main.o
-LINKOBJ  = funciones.o main.o
+OBJ      = funciones.o main.o Juego.o MetaJuego.o Datos.o
+LINKOBJ  = funciones.o main.o Juego.o MetaJuego.o Datos.o
 LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
 INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
@@ -29,3 +29,12 @@ funciones.o: funciones.c
 
 main.o: main.c
 	$(CC) -c main.c -o main.o $(CFLAGS)
+
+Juego.o: Juego.c
+	$(CC) -c Juego.c -o Juego.o $(CFLAGS)
+
+MetaJuego.o: MetaJuego.c
+	$(CC) -c MetaJuego.c -o MetaJuego.o $(CFLAGS)
+
+Datos.o: Datos.c
+	$(CC) -c Datos.c -o Datos.o $(CFLAGS)

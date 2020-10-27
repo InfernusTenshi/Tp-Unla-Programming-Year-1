@@ -8,93 +8,18 @@
 #include "funciones.h"
 #include "Juego.h"
 #include "MetaJuego.h"
-#define TESTING 1 // 1 (MODO DESAROLLADOR HABILITADO) - ? (MODO DESAROLLADOR DESABILITADO)
+#include "Menu.h"
 
-int main()
+
+void MainMenu(float Multip,int CantBolitas,int cantidadCartones,	int Bolillas[],int NumActual,
+int PuntajeActual ,int PuntajeMaquina,	bool PLinea,bool PColumna,bool PBingo,
+char Comprobador[2][cantidadCartones][RENGLONES][COLUMNAS])
 {
-struct DatosJugador Jugador;
-
-	float Multip=0;
-	int CantBolitas =0;
-	int cantidadCartones;	
-	int Bolillas[91];
-	int NumActual =0;
-	int TEST = 0;
-	int PuntajeActual = 0;
-	int PuntajeMaquina = 0;
-	bool PLinea = false;
-	bool PColumna = false;
-	bool PBingo = false;
-	vaciar(Bolillas);
-	
-    srand(time(NULL));   
 	HANDLE hConsole;
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute (hConsole,7);
 
-	
-	if(TESTING == 1)
-    {
-    printf("\n*****************************************************");
-    printf("\n*--------- PROGRAMA EN FASE DE TESTEO --------------*");
-    printf("\n*---------------------------------------------------*");
-    printf("\n*---------------------------------------------------*");
-    printf("\n*--------- ELIJA ENTRE PRUEBA ");
-    SetConsoleTextAttribute (hConsole,4);
-	printf("PROGRAMADOR");
-	SetConsoleTextAttribute (hConsole,7);
-	printf(" (1)-------*");
-    printf("\n*--------- ELIJA ENTRE PRUEBA ");
-    SetConsoleTextAttribute (hConsole,6);
-	printf("USUARIO FINAL");
-	SetConsoleTextAttribute (hConsole,7);
-	printf(" (2)-----*");
-	printf("\n*****************************************************");
-    SetConsoleTextAttribute (hConsole,4);
-    printf("\n\n\n");
-	printf("\n*****************************************************");
-	printf("\n****************** ADVERTENCIA **********************");
-	printf("\n*****************************************************");
-    printf("\n*SI USTED VE ESTE MENSAJE NO PRESIONE NADA FUERA DE *");
-    printf("\n*---------- LOS PARAMETROS ESTABLECIDOS ------------*");
-    printf("\n*---------- RUPTURA DEL PROGRAMA SEGURA ------------*");
-    printf("\n*****************************************************");
-    SetConsoleTextAttribute (hConsole,7);
-    printf("\n\n\n");
-	SetConsoleTextAttribute (hConsole,4);
-	printf("------->>> ");
-	SetConsoleTextAttribute (hConsole,7);
-    scanf("%d",&TEST);
-    system("cls");
-	}
-	if(TESTING != 1)
-	{
-		TEST = 2;
-	}
-	
-	if(TEST == 2)
-    {
-    lineas(201,205,187,36,1);
-	printf("%c         Bienvenido Al Bingo        %c",186,186);
-	lineas(200,205,188,36,0);
-/*	printf("\n*****************************************************");
-    printf("\n************** Bienvenido al Bingo ******************");
-    printf("\n-----------------------------------------------------");*/
-	}
-    if(TEST == 2)
-    {
-    Jugador=RegistrarJugador();
-	SetConsoleTextAttribute (hConsole,6);
-	printf("Jugador: %s , %s , DNI: %d \n",Jugador.Nombre,Jugador.Apellido,Jugador.Dni);
-	//Escribir(Jugador);
-	//" %s , %s , DNI: %d \n",Jugador.Nombre,Jugador.Apellido,Jugador.Dni);
-	
-	SetConsoleTextAttribute (hConsole,7);
-	}
-	
-    cantidadCartones = CantidadCartones();
-	char Comprobador[2][cantidadCartones][RENGLONES][COLUMNAS];
-    if(cantidadCartones != 0)
+
+if(cantidadCartones != 0)
     {
     	
         int cartonJugador[cantidadCartones][RENGLONES][COLUMNAS];
@@ -105,9 +30,7 @@ struct DatosJugador Jugador;
 		    int op;
 		      do{
 		      	system("cls");
-		      	    if(TEST == 2)
-    				{
-    				    lineas(201,205,187,36,1);
+		      	        lineas(201,205,187,36,1);
 						printf("%c   Por Favor Elija Como Desearia    %c\n",186,186);
 						printf("%c       El Carton Actual N%c %d        %c",186,167,i+1,186);
 						lineas(200,205,188,36,0);
@@ -121,11 +44,6 @@ struct DatosJugador Jugador;
 				   printf("------->>> ");
 				   SetConsoleTextAttribute (hConsole,7);
 		           scanf("%d",&op);
-		       		}
-		       		if(TEST == 1)
-		       		{
-		       			op = 2;
-					}
 		           switch(op)
 		           {
 		
@@ -434,123 +352,6 @@ struct DatosJugador Jugador;
 			   }
 		   }while(OPC != 0);
 		   
-		for(int I=0;I<91;I++)
-		{
-			if(Bolillas[I] == 1)
-			{
-				CantBolitas=CantBolitas+1;
-			}
-		}
-		/*
-		Además, una vez terminada la partida se podrá multiplicar los puntos.
-		 Si a la hora de lograr el Bingo se necesitaron sacar menos de 30 números de la bolsa,
-		  el puntos obtenidos se multiplicarán por 2, si se necesitaron entre 30 y 50 números el
-		   puntaje se multiplica por 1.7, si se necesitaron entre 50 y 70 números al puntaje se lo
-		    multiplicará por 1.5.
-		*/
-		if(CantBolitas < 30)
-		{
-			Multip = 2;
-		}else if(CantBolitas < 50)
-		{
-			Multip = 1.7;
-		}else if(CantBolitas < 70)
-		{
-			Multip = 1.5;
-		}else
-		{
-			Multip = 1;
-		}
-		
-		//printf("se sacaron %d",CantBolitas);
-		if(PBingo == true)
-		{
-			if(PuntajeActual < PuntajeMaquina)
-			{
-					system("cls");
-	                printf("\n*****************************************************");
-	                printf("\n******** Usted Vencio a La Maquina por %3d **********",(PuntajeActual-PuntajeMaquina));
-	                printf("\n*****************************************************");
-	            	printf("\n*****************************************************");
-					printf("\n********   Su Puntaje es de : %3d        ************",PuntajeActual);
-					printf("\n*****************************************************");
-					printf("\n********   Puntaje De La Maquina : %3d   ************",PuntajeMaquina);
-					printf("\n*****************************************************");
-	                printf("\n");
-	                getch();
-	                system("cls");
-	                printf("\n*******************************************************");
-	                if(CantBolitas > 89)
-	                {
-	                	printf("\n** Usted Finalizo el Juego Sacando Todas las Bolitas **",CantBolitas);
-					}else
-					{
-						printf("\n**** Usted Finalizo el Juego Sacando %2d Bolitas *******",CantBolitas);
-					}
-	            	
-	            	printf("\n*******************************************************");
-	            	if(Multip == 1)
-	            	{
-	            	printf("\n******** Sus Puntajes No Seran Multiplicados **********");	
-					}else
-					{
-	        	    	printf("\n**** Sus Puntajes Seran Multiplicados por %.1f   ********",Multip);	
-					}
-					printf("\n*******************************************************");
-					getch();
-					char SAVEAUX = 'G';
-					int SAVE =8;
-					do{
-					system("cls");
-	            	printf("\n*******************************************************");
-	            	printf("\n************ Su Nuevo puntaje es de %3d ***************",(PuntajeActual*Multip));
-	            	printf("\n*******************************************************\n\n");
-	            	
-	            	printf("\n*******************************************************");
-	            	printf("\n************ Desea Guardar Su Puntaje? ****************");
-	            	printf("\n*******************************************************");
-	            	printf("\n************ (Y) SI *********** (N) NO ****************");
-	            	printf("\n*******************************************************");
-					printf("\n\n\n");
-					SetConsoleTextAttribute (hConsole,4);
-					printf("------->>> ");
-					SetConsoleTextAttribute (hConsole,7);
-					scanf("%c",&SAVEAUX);
-					if(SAVEAUX == 'Y' || SAVEAUX == 'y') //  TIENE QUE GUARDAR Y MOSTRAR
-					{
-						SAVE =7;
-						Escribir(Jugador);
-						//void Escribir(int punt,int dni,char nomb[10],char ape[10])
-					}
-					if(SAVEAUX == 'N' || SAVEAUX == 'n')  // FINAL PROGRAMA !!
-					{
-						system("cls");
-		                printf("\n*****************************************************");
-		                printf("\n*********** Hasta Luego Vuelva Pronto ***************");
-		                printf("\n*****************************************************");
-		                getch();
-					}
-					
-	            	}while(SAVE != 7);
-	            	
-	            	
-			}
-			/*if(PuntajeActual < PuntajeMaquina)// FINAL PROGRAMA !!
-			{
-					system("cls");
-	                printf("\n*****************************************************");
-	                printf("\n****  Usted Fue Vencido Por la Maquina       ********");
-	                printf("\n*****************************************************");
-	                printf("\n****  La Maquina Lo Destrozo con %3d Puntos  ********",PuntajeMaquina);
-	                printf("\n*****************************************************");
-	                
-	                printf("\n");
-			}*/
-		}
-	
-	
-		   
-		   
 	}
-    return 0;
+		
 }
