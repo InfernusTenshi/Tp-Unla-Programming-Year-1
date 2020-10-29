@@ -86,39 +86,26 @@ Jugador RegistrarJugador()
 }
 
 
-void Escribir(struct DatosJugador Jug)
+void Escribir(Jugador Jug,float Punt)
 {
+	int NPunt = Punt;
 	int Auxi =0;
 	FILE *archivo = fopen("Puntajes.ear","a");
 	if(archivo == NULL)
 	{
-		perror("error abriendo el archivo");
+		lineas(201,205,187,47,1);
+		printf("%c   Archivo De Puntajes Roto o no Encontrado    %c",186,186);
+		lineas(200,205,188,47,0);
 	}
 	else
 	{
-		fprintf(archivo,"/ %d ",Jug.Dni);
-		
-		Auxi = (8 - strlen(Jug.Nombre));
-		fprintf(archivo,"%s",Jug.Nombre);
-		if(Auxi != 0)
-		{
-			for(int K=0;K<Auxi;K++)
-			fprintf(archivo," ");
-		}
+		//fputc('\n',archivo);
+		fprintf(archivo,"\n%d+%s+%s+%d",Jug->Dni,Jug->Nombre,Jug->Apellido,NPunt);
+		lineas(201,205,187,47,1);
+		printf("%c     Puntaje Nuevo Añadido De Forma Exitosa    %c",186,186);
+		lineas(200,205,188,47,0);
+	}
 
-
-		
-		Auxi = (8 - strlen(Jug.Apellido));
-		fprintf(archivo," %s ",Jug.Apellido);
-		if(Auxi != 0)
-		{
-			for(int K=0;K<Auxi;K++)
-			fprintf(archivo," ");
-		}
-		
-		fprintf(archivo," %3d  /",Jug.Puntaje);
-			fputc('\n',archivo);
-		}
 	fclose(archivo);	
 }
 
@@ -259,8 +246,17 @@ void MostrarTablaJugadores(Jugador Jug[],int Max)
 				printf("%s",J->Apellido);
 			Espacios((12 - strlen(J->Apellido)));
 			Espacios(2);
-				printf("%d",J->Puntaje);
-			Espacios(2);
+			printf("%d",J->Puntaje);
+			if(J->Puntaje < 10)
+			{
+			Espacios(4);	
+			}else if(J->Puntaje < 100)
+			{
+			Espacios(3);	
+			}else
+			{
+			Espacios(2);	
+			}
 				printf("%c\n",186);
 		}
 	}

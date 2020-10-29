@@ -14,7 +14,7 @@ int GetPuntaje(Jugador J);
 
 //------------
 
-void Escribir (struct DatosJugador Jug);
+
 
 //---- Relevamiento de Datos
 void CargarArchivo(Jugador Jug[]);
@@ -26,6 +26,7 @@ void CargarArchivoLimpio(Jugador Jug[],int C);
 //---- Utilizacion de Datos
 
 void MostrarTablaJugadores(Jugador Jug[],int Max);
+void Escribir (Jugador Jug,float Punt);
 
 
 

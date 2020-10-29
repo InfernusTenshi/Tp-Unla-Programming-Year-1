@@ -13,6 +13,7 @@
 #define TESTING 1 // 1 (MODO DESAROLLADOR HABILITADO) - ? (MODO DESAROLLADOR DESABILITADO)
 #define MAXJUGADORES 30
 
+
 int main()
 {
 	/*Jugador MejoresJugadores[MAXJUGADORES];
@@ -37,10 +38,5 @@ int main()
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute (hConsole,7);
     MenuPiola();
-	
-	// 			--------------------CAMBIOSSSS------------------------
-/*	printf("\n*****************************************************");
-    printf("\n************** Bienvenido al Bingo ******************");
-    printf("\n-----------------------------------------------------");*/
     return 0;
 }

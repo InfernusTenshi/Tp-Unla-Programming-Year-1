@@ -39,7 +39,7 @@ void MenuPiola(){
 	SetConsoleTextAttribute (hConsole,6);
 	printf("Jugador: %s , %s , DNI: %d \n",GetNombre(Player),GetApellido(Player),GetDni(Player));
 
-	
+	//Escribir(Player);
 	SetConsoleTextAttribute (hConsole,7);
 	cantidadCartones = CantidadCartones();
 	printf("trolo");
@@ -399,55 +399,56 @@ void MenuPiola(){
 			Multip = 1;
 		}
 		
-		//printf("se sacaron %d",CantBolitas);
+
 		if(PBingo == true)
 		{
 			if(PuntajeActual > PuntajeMaquina)
 			{
 					system("cls");
-	                printf("\n*****************************************************");
-	                printf("\n******** Usted Vencio a La Maquina por %3d **********",(PuntajeActual-PuntajeMaquina));
-	                printf("\n*****************************************************");
-	            	printf("\n*****************************************************");
-					printf("\n********   Su Puntaje es de : %3d        ************",PuntajeActual);
-					printf("\n*****************************************************");
-					printf("\n********   Puntaje De La Maquina : %3d   ************",PuntajeMaquina);
-					printf("\n*****************************************************");
-	                printf("\n");
+					lineas(201,205,187,47,1);
+					printf("%c     Usted Fue Vencido Por La Maquina          %c",186,186);
+					lineas(186,255,186,47,0);
+					printf("%c     La Maquina Lo Detrozo con %3d Puntos      %c",186,PuntajeMaquina,186);
+					lineas(200,205,188,47,0);
 	                getch();
 	                system("cls");
-	                printf("\n*******************************************************");
+	                lineas(201,205,187,47,1);
 	                if(CantBolitas > 89)
 	                {
-	                	printf("\n** Usted Finalizo el Juego Sacando Todas las Bolitas **",CantBolitas);
+	                	printf("%c     Usted Gano Sacando Todas las Bolitas      %c",186,186);
 					}else
 					{
-						printf("\n**** Usted Finalizo el Juego Sacando %2d Bolitas *******",CantBolitas);
+						printf("%c   Usted Finalizo El Juego Sacando %2d Bolitas  %c",186,CantBolitas,186);
 					}
-	            	
-	            	printf("\n*******************************************************");
+
+
 	            	if(Multip == 1)
 	            	{
-	            	printf("\n******** Sus Puntajes No Seran Multiplicados **********");	
+	            	lineas(186,255,186,47,0);
+	            	printf("%c      Sus Puntajes No Seran Multiplicados      %c",186,186);
+	            	//printf("\n******** Sus Puntajes No Seran Multiplicados **********");	
 					}else
 					{
-	        	    	printf("\n**** Sus Puntajes Seran Multiplicados por %.1f   ********",Multip);	
+						lineas(186,255,186,47,0);
+						//printf("\n**** Sus Puntajes Seran Multiplicados por %.1f   ********",Multip);	
+						printf("%c   Sus Puntajes Seran Multiplicados por %.1f    %c",186,Multip,186);
+
 					}
-					printf("\n*******************************************************");
+					lineas(200,205,188,47,0);
 					getch();
 					char SAVEAUX = 'G';
 					int SAVE =8;
 					do{
 					system("cls");
-	            	printf("\n*******************************************************");
-	            	printf("\n************ Su Nuevo puntaje es de %3d ***************",(PuntajeActual*Multip));
-	            	printf("\n*******************************************************\n\n");
+					lineas(201,205,187,47,1);
+					printf("%c          Su Nuevo Puntaje es de %.0f           %c",186,(PuntajeActual*Multip),186);
+					lineas(200,205,188,47,0);
 	            	
-	            	printf("\n*******************************************************");
-	            	printf("\n************ Desea Guardar Su Puntaje? ****************");
-	            	printf("\n*******************************************************");
-	            	printf("\n************ (Y) SI *********** (N) NO ****************");
-	            	printf("\n*******************************************************");
+	            	lineas(201,205,187,47,1);
+					printf("%c            Desea Guardar Su Puntaje?          %c",186,186);
+					lineas(186,255,186,47,0);
+					printf("%c             (Y) SI           (N) NO           %c",186,186);
+					lineas(200,205,188,47,0);
 					printf("\n\n\n");
 					SetConsoleTextAttribute (hConsole,4);
 					printf("------->>> ");
@@ -456,15 +457,16 @@ void MenuPiola(){
 					if(SAVEAUX == 'Y' || SAVEAUX == 'y') //  TIENE QUE GUARDAR Y MOSTRAR
 					{
 						SAVE =7;
-						//Escribir(Jugador);
-						//void Escribir(int punt,int dni,char nomb[10],char ape[10])
+						//Escribir(Player,(PuntajeActual*Multip))
+
 					}
 					if(SAVEAUX == 'N' || SAVEAUX == 'n')  // FINAL PROGRAMA !!
 					{
 						system("cls");
-		                printf("\n*****************************************************");
-		                printf("\n*********** Hasta Luego Vuelva Pronto ***************");
-		                printf("\n*****************************************************");
+	                	lineas(201,205,187,47,1);
+						printf("%c          Hasta Luego Vuelva Pronto            %c",186,186);
+						lineas(200,205,188,47,0);
+						break;
 		                getch();
 					}
 					
