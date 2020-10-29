@@ -9,7 +9,6 @@
 #include "Juego.h"
 #include "MetaJuego.h"
 #include "Datos.h"
-#define TESTING 1 // 1 (MODO DESAROLLADOR HABILITADO) - ? (MODO DESAROLLADOR DESABILITADO)
 #define MAXJUGADORES 30
 
 void MenuPiola(){
@@ -39,26 +38,22 @@ void MenuPiola(){
 	Jugador Player=RegistrarJugador();
 	SetConsoleTextAttribute (hConsole,6);
 	printf("Jugador: %s , %s , DNI: %d \n",GetNombre(Player),GetApellido(Player),GetDni(Player));
-	//Escribir(Jugador);
-	//" %s , %s , DNI: %d \n",Jugador.Nombre,Jugador.Apellido,Jugador.Dni);
+
 	
 	SetConsoleTextAttribute (hConsole,7);
-	
 	cantidadCartones = CantidadCartones();
+	printf("trolo");
 	char Comprobador[2][cantidadCartones][RENGLONES][COLUMNAS];
     if(cantidadCartones != 0)
     {
     	
         int cartonJugador[cantidadCartones][RENGLONES][COLUMNAS];
         int cartonesMaquina[cantidadCartones][RENGLONES][COLUMNAS];
+        int op = 0;
         for(int i = 0; i < cantidadCartones ; i++)
         {
-        	
-		    int op = 0;
 		      do{
 		      	system("cls");
-		      	    if(TEST == 2)
-    				{
     				    lineas(201,205,187,36,1);
 						printf("%c   Por Favor Elija Como Desearia    %c\n",186,186);
 						printf("%c       El Carton Actual N%c %d        %c",186,167,i+1,186);
@@ -71,15 +66,8 @@ void MenuPiola(){
 		           printf("\n\n\n");
 				   SetConsoleTextAttribute (hConsole,4);
 				   printf("------->>> ");
-				   printf("opcion %i",op);
 				   SetConsoleTextAttribute (hConsole,7);
 		           scanf("%d",&op);
-		           printf("opcion %i",op);
-		       		}
-		       		if(TEST == 1)
-		       		{
-		       			op = 2;
-					}
 		           switch(op)
 		           {
 		
@@ -104,18 +92,10 @@ void MenuPiola(){
 		           }
 		        }
 		       while(op > 2 || op < 1);
-		       
-		      
-		       
 		   }
 		for(int i = 0; i < cantidadCartones ; i++)
         {
-        	
-		   
-		   cargarMatrizAleatoria(cartonesMaquina,i);
-		       
-		      
-		       
+		   cargarMatrizAleatoria(cartonesMaquina,i);   
 		}
 		int OPC;
 		
@@ -164,32 +144,38 @@ void MenuPiola(){
 						printf("\n"); 	
 						MostrarCarton(cartonesMaquina,cantidadCartones,Bolillas,-98,Comprobador,1);
 						getch();
+						
+						
+
 	           	break;
 	           	case 2:
 					system("cls");
-	                printf("\n*****************************************************");
+					
+					lineas(201,205,187,36,1);
+
+
+
 	                for(int I=0;I<10;I++)
 	                {
 	                	NumActual = Sacar(Bolillas);
-	                	printf("\n******** Salio EL Numero ----> %2d *******************",NumActual);
+					printf("%c       Salio el Numero:  %2d         %c",186,NumActual,186);
+					printf("\n");
 					}
-	                printf("\n*****************************************************");
+					lineas(200,205,188,36,1);
 	                printf("\n");
 	                ComprobarColumna(cartonesMaquina,cantidadCartones,Bolillas,Comprobador,1);
 	                ComprobarLinea(cartonesMaquina,cantidadCartones,Bolillas,Comprobador,1);
 	                getch();
 	                	system("cls");
-						printf("\n*********************************************");
-						printf("\n*************** Cartones Jugador ************");
-						printf("\n*********************************************");
-						printf("\n");
-						MostrarCarton(cartonJugador,cantidadCartones,Bolillas,-98,Comprobador,0);
+	                	lineas(201,205,187,36,1);
+						printf("%c       Cartones Del Jugador         %c",186,186);
+						lineas(200,205,188,36,0);
+						MostrarCarton(cartonJugador,cantidadCartones,Bolillas,-98,Comprobador,0);	
 						getch();
-						system("cls");
-		           		printf("\n*********************************************");
-						printf("\n*************** Cartones Maquina ************");
-						printf("\n*********************************************");	
-						printf("\n"); 	
+						system("cls");					
+						lineas(201,205,187,36,1);
+						printf("%c     Cartones De La Maquina         %c",186,186);
+						lineas(200,205,188,36,0);
 						MostrarCarton(cartonesMaquina,cantidadCartones,Bolillas,-98,Comprobador,1);
 						getch();
 					if(ComprobarColumna(cartonesMaquina,cantidadCartones,Bolillas,Comprobador,1) != 0)
@@ -221,26 +207,24 @@ void MenuPiola(){
 	        	case 3:
 	        		system("cls");
 	        		NumActual = Sacar(Bolillas);
-	                printf("\n*****************************************************");
-	                printf("\n******** Salio EL Numero ----> %2d *******************",NumActual);
-	                printf("\n*****************************************************");
-	                printf("\n");
+	        		
+	        		lineas(201,205,187,36,1);
+					printf("%c       Salio el Numero:  %2d         %c",186,NumActual,186);
+					lineas(200,205,188,36,0);
+
 	                getch();	  
 					ComprobarColumna(cartonesMaquina,cantidadCartones,Bolillas,Comprobador,1);
 	                ComprobarLinea(cartonesMaquina,cantidadCartones,Bolillas,Comprobador,1);
 	                system("cls");
-					printf("\n*********************************************");
-					printf("\n*************** Cartones Jugador ************");
-					printf("\n*********************************************");
-					printf("\n");
+	                lineas(201,205,187,36,1);
+					printf("%c       Cartones Del Jugador         %c",186,186);
+					lineas(200,205,188,36,0);
 					MostrarCarton(cartonJugador,cantidadCartones,Bolillas,NumActual,Comprobador,0);
 					getch();
-					
-		           	system("cls");
-		           	printf("\n*********************************************");
-					printf("\n*************** Cartones Maquina ************");
-					printf("\n*********************************************");	
-					printf("\n"); 
+					system("cls");					
+					lineas(201,205,187,36,1);
+					printf("%c     Cartones De La Maquina         %c",186,186);
+					lineas(200,205,188,36,0);
 					MostrarCarton(cartonesMaquina,cantidadCartones,Bolillas,NumActual,Comprobador,1);
 					getch();
 	                if(ComprobarColumna(cartonesMaquina,cantidadCartones,Bolillas,Comprobador,1) != 0)
@@ -273,10 +257,10 @@ void MenuPiola(){
 					system("cls");
 					if(ComprobarLinea(cartonJugador,cantidadCartones,Bolillas,Comprobador,0) != 0)
 					{
-	                printf("\n*****************************************************");
-	                printf("\n***** Hay %d Lineas Completas Marcadas en Rojo *******",
-					ComprobarLinea(cartonJugador,cantidadCartones,Bolillas,Comprobador,0));//Num 0 = Jugador / Num 1 = Maquina	
-	                printf("\n*****************************************************");
+					lineas(201,205,187,45,1);
+					printf("%c   Hay %d Lineas Completas Marcadas en Rojo   %c",186,ComprobarLinea(cartonJugador,cantidadCartones,Bolillas,Comprobador,0),186);
+					//Num 0 = Jugador / Num 1 = Maquina	
+					lineas(200,205,188,45,0);
 	                getch();
 	                // suma de Puntajes
 	                	if(PLinea == false)
@@ -288,24 +272,23 @@ void MenuPiola(){
 	                //omprobarLinea(cartonesMaquina,cantidadCartones,Bolillas,Comprobador,1);
 	                					              
 	                system("cls");
-					printf("\n*********************************************");
-					printf("\n*************** Cartones Jugador ************");
-					printf("\n*********************************************");
-					printf("\n");
+	                lineas(201,205,187,36,1);
+					printf("%c       Cartones Del Jugador         %c",186,186);
+					lineas(200,205,188,36,0);
 					MostrarCarton(cartonJugador,cantidadCartones,Bolillas,NumActual,Comprobador,0);
 					getch();
 					
 		           	system("cls");
-		           	printf("\n*********************************************");
-					printf("\n*************** Cartones Maquina ************");
-					printf("\n*********************************************");	
-					printf("\n"); 
+						system("cls");					
+						lineas(201,205,187,36,1);
+						printf("%c     Cartones De La Maquina         %c",186,186);
+						lineas(200,205,188,36,0);
 					MostrarCarton(cartonesMaquina,cantidadCartones,Bolillas,NumActual,Comprobador,1);
 					getch();
 					}else{
-					   	printf("\n*********************************************");
-						printf("\n***** Usted no Cumple Con Los Requisitos ****");
-						printf("\n*********************************************");
+	                	lineas(201,205,187,47,1);
+						printf("%c Usted No Cumple COn los Requisitos Necesarios %c",186,186);
+						lineas(200,205,188,47,0);
 					}
 	                getch();
 				break;
@@ -313,10 +296,11 @@ void MenuPiola(){
 					system("cls");
 					if(ComprobarColumna(cartonJugador,cantidadCartones,Bolillas,Comprobador,0) != 0)
 	                {
-		                printf("\n*****************************************************");
-		                printf("\n*** Hay %2d Columnas Completas Marcadas en Celeste ***",
-						ComprobarColumna(cartonJugador,cantidadCartones,Bolillas,Comprobador,0));//Num 0 = Jugador / Num 1 = Maquina	
-		                printf("\n*****************************************************");
+	                	lineas(201,205,187,45,1);
+						printf("%c  Hay %d Columnas Completas Marcas en Celeste %c",186,
+						ComprobarColumna(cartonJugador,cantidadCartones,Bolillas,Comprobador,0),186);
+						//Num 0 = Jugador / Num 1 = Maquina
+						lineas(200,205,188,45,0);
 		                getch();
 		                //ComprobarColumna(cartonesMaquina,cantidadCartones,Bolillas,Comprobador,1);
 		                	if(PColumna == false)
@@ -326,24 +310,23 @@ void MenuPiola(){
 							}
 		                					              
 		                system("cls");
-						printf("\n*********************************************");
-						printf("\n*************** Cartones Jugador ************");
-						printf("\n*********************************************");
-						printf("\n");
+	                lineas(201,205,187,36,1);
+					printf("%c       Cartones Del Jugador         %c",186,186);
+					lineas(200,205,188,36,0);
 						MostrarCarton(cartonJugador,cantidadCartones,Bolillas,NumActual,Comprobador,0);
 						getch();
 						
 			           	system("cls");
-			           	printf("\n*********************************************");
-						printf("\n*************** Cartones Maquina ************");
-						printf("\n*********************************************");	
-						printf("\n"); 
+						system("cls");					
+						lineas(201,205,187,36,1);
+						printf("%c     Cartones De La Maquina         %c",186,186);
+						lineas(200,205,188,36,0);
 						MostrarCarton(cartonesMaquina,cantidadCartones,Bolillas,NumActual,Comprobador,1);
 
 					}else{
-					   	printf("\n*********************************************");
-						printf("\n***** Usted no Cumple Con Los Requisitos ****");
-						printf("\n*********************************************");
+	                	lineas(201,205,187,47,1);
+						printf("%c Usted No Cumple COn los Requisitos Necesarios %c",186,186);
+						lineas(200,205,188,47,0);
 					}
 					getch();
 				break;
@@ -359,9 +342,9 @@ void MenuPiola(){
 						//printf("\n*************** Usted gana ***************\n");
 						OPC=0;
 					}else{
-					   	printf("\n*********************************************");
-						printf("\n***** Usted no Cumple Con Los Requisitos ****");
-						printf("\n*********************************************");
+	                	lineas(201,205,187,47,1);
+						printf("%c Usted No Cumple COn los Requisitos Necesarios %c",186,186);
+						lineas(200,205,188,47,0);
 					}
 	                getch();
 				break;
@@ -372,16 +355,16 @@ void MenuPiola(){
 				break;
 				case 0:// FINAL PROGRAMA !!
 					system("cls");
-	                printf("\n*****************************************************");
-	                printf("\n*********** Hasta Luego Vuelva Pronto ***************");
-	                printf("\n*****************************************************");
+	                	lineas(201,205,187,47,1);
+						printf("%c          Hasta Luego Vuelva Pronto            %c",186,186);
+						lineas(200,205,188,47,0);
 	                getch();
 				break;
 	        	default:
 	        	    system("cls");
-	                printf("\n*****************************************************");
-	                printf("\n******** Opcion invalida intente de nuevo ***********");
-	                printf("\n*****************************************************");
+	                	lineas(201,205,187,47,1);
+						printf("%c       Opcion Invalida Intente Nuevamente      %c",186,186);
+						lineas(200,205,188,47,0);
 	                printf("\n");
 	                getch();
 	        	break;
@@ -419,7 +402,7 @@ void MenuPiola(){
 		//printf("se sacaron %d",CantBolitas);
 		if(PBingo == true)
 		{
-			if(PuntajeActual < PuntajeMaquina)
+			if(PuntajeActual > PuntajeMaquina)
 			{
 					system("cls");
 	                printf("\n*****************************************************");
@@ -489,7 +472,7 @@ void MenuPiola(){
 	            	
 	            	
 			}
-			/*if(PuntajeActual < PuntajeMaquina)// FINAL PROGRAMA !!
+			if(PuntajeActual < PuntajeMaquina)// FINAL PROGRAMA !!
 			{
 					system("cls");
 	                printf("\n*****************************************************");
@@ -499,7 +482,7 @@ void MenuPiola(){
 	                printf("\n*****************************************************");
 	                
 	                printf("\n");
-			}*/
+			}
 		}
 	
 	

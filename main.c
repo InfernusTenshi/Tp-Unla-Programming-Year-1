@@ -18,7 +18,7 @@ int main()
 	/*Jugador MejoresJugadores[MAXJUGADORES];
 	CargarArchivoLimpio(MejoresJugadores,MAXJUGADORES);
 	CargarArchivo(MejoresJugadores);*/
-	int TEST = 0;
+
 	/*float Multip=0;
 	int CantBolitas =0;
 	int cantidadCartones;	
@@ -36,54 +36,11 @@ int main()
 	HANDLE hConsole;
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute (hConsole,7);
-
+    MenuPiola();
 	
-	if(TESTING == 1)
-    {
-    printf("\n*****************************************************");
-    printf("\n*--------- PROGRAMA EN FASE DE TESTEO --------------*");
-    printf("\n*---------------------------------------------------*");
-    printf("\n*---------------------------------------------------*");
-    printf("\n*--------- ELIJA ENTRE PRUEBA ");
-    SetConsoleTextAttribute (hConsole,4);
-	printf("PROGRAMADOR");
-	SetConsoleTextAttribute (hConsole,7);
-	printf(" (1)-------*");
-    printf("\n*--------- ELIJA ENTRE PRUEBA ");
-    SetConsoleTextAttribute (hConsole,6);
-	printf("USUARIO FINAL");
-	SetConsoleTextAttribute (hConsole,7);
-	printf(" (2)-----*");
-	printf("\n*****************************************************");
-    SetConsoleTextAttribute (hConsole,4);
-    printf("\n\n\n");
-	printf("\n*****************************************************");
-	printf("\n****************** ADVERTENCIA **********************");
-	printf("\n*****************************************************");
-    printf("\n*SI USTED VE ESTE MENSAJE NO PRESIONE NADA FUERA DE *");
-    printf("\n*---------- LOS PARAMETROS ESTABLECIDOS ------------*");
-    printf("\n*---------- RUPTURA DEL PROGRAMA SEGURA ------------*");
-    printf("\n*****************************************************");
-    SetConsoleTextAttribute (hConsole,7);
-    printf("\n\n\n");
-	SetConsoleTextAttribute (hConsole,4);
-	printf("------->>> ");
-	SetConsoleTextAttribute (hConsole,7);
-    scanf("%d",&TEST);
-    system("cls");
-	}
-	if(TESTING != 1)
-	{
-		TEST = 2;
-	}
-	
-	
-    MenuPiola();// 			--------------------CAMBIOSSSS------------------------
+	// 			--------------------CAMBIOSSSS------------------------
 /*	printf("\n*****************************************************");
     printf("\n************** Bienvenido al Bingo ******************");
     printf("\n-----------------------------------------------------");*/
-	
-	
-    
     return 0;
 }
