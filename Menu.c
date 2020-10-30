@@ -72,7 +72,7 @@ void Menu(){
 		
 		            case 1:
 		                //LLAMAR FUNCION GENERAR POR TECLADO
-		                vaciarCarton(cartonJugador,cantidadCartones);
+		                vaciarCartonPiola(cartonJugador,cantidadCartones);
 		                cargarMatrizManual(cartonJugador,i);
 		               	break;
 		            case 2:
@@ -286,7 +286,7 @@ void Menu(){
 					getch();
 					}else{
 	                	lineas(201,205,187,47,1);
-						printf("%c Usted No Cumple Con los Requisitos Necesarios %c",186,186);
+						printf("%c Usted No Cumple COn los Requisitos Necesarios %c",186,186);
 						lineas(200,205,188,47,0);
 					}
 	                getch();
@@ -324,7 +324,7 @@ void Menu(){
 
 					}else{
 	                	lineas(201,205,187,47,1);
-						printf("%c Usted No Cumple Con los Requisitos Necesarios %c",186,186);
+						printf("%c Usted No Cumple COn los Requisitos Necesarios %c",186,186);
 						lineas(200,205,188,47,0);
 					}
 					getch();
@@ -342,7 +342,7 @@ void Menu(){
 						OPC=0;
 					}else{
 	                	lineas(201,205,187,47,1);
-						printf("%c Usted No Cumple Con los Requisitos Necesarios %c",186,186);
+						printf("%c Usted No Cumple COn los Requisitos Necesarios %c",186,186);
 						lineas(200,205,188,47,0);
 					}
 	                getch();
@@ -475,15 +475,18 @@ void Menu(){
 			}
 			if(PuntajeActual < PuntajeMaquina)// FINAL PROGRAMA !!
 			{
-					system("cls");
-	                printf("\n*****************************************************");
-	                printf("\n****  Usted Fue Vencido Por la Maquina       ********");
-	                printf("\n*****************************************************");
-	                printf("\n****  La Maquina Lo Destrozo con %3d Puntos  ********",PuntajeMaquina);
-	                printf("\n*****************************************************");
-	                
-	                printf("\n");
+				lineas(201,205,187,47,1);
+				printf("%c       Usted Fue Vencido Por La Maquina        %c",186,186);
+				lineas(186,255,186,47,0);
+				printf("%c       La Maquina Le Gano Con %3d Puntos       %c",186,PuntajeMaquina,186);
+				lineas(200,205,188,47,0);
+	            printf("\n");
 			}
-		}  
+		}
+	
+	
+		   
+		   
 	}
+	
 }

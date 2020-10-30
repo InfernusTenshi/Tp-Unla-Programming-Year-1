@@ -15,9 +15,7 @@ struct DatosJugador{
 	int Dni;
 	int Puntaje;
 };
-void Destructor(Jugador j){
-	free(j);
-}
+
 Jugador RegistrarJugador()
 {
 	Jugador J = malloc(sizeof(struct DatosJugador));

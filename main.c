@@ -17,8 +17,8 @@ int main()
     srand(time(NULL));   
 	HANDLE hConsole;
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute (hConsole,7);
-    Menu(); 
+	SetConsoleTextAttribute (hConsole,7);	                
+    Menu();
     return 0;
 }
 
