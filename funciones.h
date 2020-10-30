@@ -7,17 +7,28 @@
 
 #define RENGLONES 3
 #define COLUMNAS 5
+
+//Pre:Enviar dos enteros por parametro
+//Post:Retorna un numero aleatoreo entre los valores que se envian por parametro
 int aleatorioEntre(int mini, int maxi);
 
+//Pre:El carton tiene que estar creado
+//Post:Se usa para que no se cargue la matriz con numeros repetidos si es repetido retorna 0
+int buscarEnMatriz(int m[][RENGLONES][COLUMNAS],int pos, int buscar);
 
+//Pre:El carton tiene que estar creado
+//Post:Se carga el Carton sin numero repetidos
+void cargarMatrizAleatoria(int m[][RENGLONES][COLUMNAS],int pos);
 
+//Pre:Tiene que estar credo un vector
+//Post:Se vacia el vector escribiendo 0 en cada posicion
+void vaciar(int Bola[91]);
 
-int buscarEnMatriz(int m[][RENGLONES][COLUMNAS],int pos, int buscar);// Dejar en Funciones
-void cargarMatrizAleatoria(int m[][RENGLONES][COLUMNAS],int pos);// Dejar en Funciones
-void vaciar(int Bola[91]);// Dejar en Funciones
-void vaciarCartonPiola(int carton[][RENGLONES][COLUMNAS],int cantidad);// Dejar en Funciones
+//Pre:Debe estar creado el carton/Matriz
+//Post:Se vacia la matriz escribiendola con 0
+void vaciarCartonPiola(int carton[][RENGLONES][COLUMNAS],int cantidad);
 
 // Visuales
-void lineas(char P,char L,char F,char T,int X);// Dejar en Funciones
+void lineas(char P,char L,char F,char T,int X);
 void Espacios(int X);
 #endif // FUNCIONES_H_INCLUDED

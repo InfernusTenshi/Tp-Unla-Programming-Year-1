@@ -42,7 +42,6 @@ void MenuPiola(){
 	//Escribir(Player);
 	SetConsoleTextAttribute (hConsole,7);
 	cantidadCartones = CantidadCartones();
-	printf("trolo");
 	char Comprobador[2][cantidadCartones][RENGLONES][COLUMNAS];
     if(cantidadCartones != 0)
     {
