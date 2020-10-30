@@ -44,5 +44,5 @@ Jugador Leer(char aux[40]);
 //Post:vacia todas las variables de un jugador y retorna la estructura
 Jugador VaciarJugador();
 
-
+void Destructor(Jugador j);
 #endif

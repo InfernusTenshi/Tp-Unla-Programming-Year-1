@@ -28,6 +28,7 @@ void vaciar(int Bola[91]);
 //Post:Se vacia la matriz escribiendola con 0
 void vaciarCartonPiola(int carton[][RENGLONES][COLUMNAS],int cantidad);
 
+
 // Visuales
 void lineas(char P,char L,char F,char T,int X);
 void Espacios(int X);

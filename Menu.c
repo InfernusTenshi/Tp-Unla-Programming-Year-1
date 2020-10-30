@@ -484,11 +484,7 @@ void MenuPiola(){
 	                
 	                printf("\n");
 			}
-		}
-	
-	
-		   
-		   
+		}  
 	}
-	
+	Destructor(MejoresJugadores);
 }
