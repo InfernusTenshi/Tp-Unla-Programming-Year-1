@@ -11,7 +11,7 @@
 #include "Datos.h"
 #define MAXJUGADORES 30
 
-void MenuPiola(){
+void Menu(){
 	Jugador MejoresJugadores[MAXJUGADORES];
 	CargarArchivoLimpio(MejoresJugadores,MAXJUGADORES);
 	CargarArchivo(MejoresJugadores);
@@ -72,7 +72,7 @@ void MenuPiola(){
 		
 		            case 1:
 		                //LLAMAR FUNCION GENERAR POR TECLADO
-		                vaciarCartonPiola(cartonJugador,cantidadCartones);
+		                vaciarCarton(cartonJugador,cantidadCartones);
 		                cargarMatrizManual(cartonJugador,i);
 		               	break;
 		            case 2:
@@ -286,7 +286,7 @@ void MenuPiola(){
 					getch();
 					}else{
 	                	lineas(201,205,187,47,1);
-						printf("%c Usted No Cumple COn los Requisitos Necesarios %c",186,186);
+						printf("%c Usted No Cumple Con los Requisitos Necesarios %c",186,186);
 						lineas(200,205,188,47,0);
 					}
 	                getch();
@@ -324,7 +324,7 @@ void MenuPiola(){
 
 					}else{
 	                	lineas(201,205,187,47,1);
-						printf("%c Usted No Cumple COn los Requisitos Necesarios %c",186,186);
+						printf("%c Usted No Cumple Con los Requisitos Necesarios %c",186,186);
 						lineas(200,205,188,47,0);
 					}
 					getch();
@@ -342,7 +342,7 @@ void MenuPiola(){
 						OPC=0;
 					}else{
 	                	lineas(201,205,187,47,1);
-						printf("%c Usted No Cumple COn los Requisitos Necesarios %c",186,186);
+						printf("%c Usted No Cumple Con los Requisitos Necesarios %c",186,186);
 						lineas(200,205,188,47,0);
 					}
 	                getch();
@@ -486,5 +486,4 @@ void MenuPiola(){
 			}
 		}  
 	}
-	Destructor(MejoresJugadores);
 }

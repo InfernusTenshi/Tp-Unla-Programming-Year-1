@@ -97,7 +97,7 @@ void vaciar(int Bola[91]){
     }
 }
 
-void vaciarCartonPiola(int carton[][RENGLONES][COLUMNAS],int cantidad){//se vacia el carton porque estaba 
+void vaciarCarton(int carton[][RENGLONES][COLUMNAS],int cantidad){//se vacia el carton porque estaba 
 //arrastrando mierda en la cargar de carton manual :)
 	
 	for (int M=0;M<cantidad;M++)

@@ -18,7 +18,7 @@ int main()
 	HANDLE hConsole;
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute (hConsole,7);
-    MenuPiola(); 
+    Menu(); 
     return 0;
 }
 
